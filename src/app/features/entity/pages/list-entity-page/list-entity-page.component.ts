@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,15 +13,17 @@ import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/p
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EntityEditComponent } from '@features/entity/components/entity-edit/entity-edit.component';
+import { EntityReadComponent } from '@features/entity/components/entity-read/entity-read.component';
+import { Entity } from '@features/entity/models/entity.interface';
+import { RegionLabelPipe } from '@features/entity/pipes/region-label.pipe';
+import { SpecialtyLabelPipe } from '@features/entity/pipes/specialty-label.pipe';
 import { Store } from '@ngrx/store';
-import { debounceTime, distinctUntilChanged, startWith, tap } from 'rxjs';
-import { EntityEditComponent } from '../../components/entity-edit/entity-edit.component';
-import { Entity } from '../../models/entity.interface';
-import { RegionLabelPipe } from '../../pipes/region-label.pipe';
-import { SpecialtyLabelPipe } from '../../pipes/specialty-label.pipe';
+import { debounceTime, distinctUntilChanged, startWith } from 'rxjs';
 import * as EntityActions from '../../store/entity.actions';
 import * as EntitySelectors from '../../store/entity.selectors';
-import { EntityReadComponent } from '../../components/entity-read/entity-read.component';
+
+
 
 
 @Component({
@@ -83,7 +86,7 @@ export class ListEntityPageComponent implements OnInit {
   ];
 
 
-  @ViewChild(MatPaginator, {static: false}) paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
   constructor(
     private store: Store,

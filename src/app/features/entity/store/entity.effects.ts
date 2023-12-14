@@ -1,10 +1,10 @@
-import { LoaderService } from './../../../shared/services/loader.service';
+
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { catchError, tap, map, mergeMap } from 'rxjs/operators';
-import * as EntityActions from './entity.actions';
+import { LoaderService } from '@shared/services/loader.service';
+import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { EntityService } from '../services/entity.service';
+import * as EntityActions from './entity.actions';
 
 @Injectable()
 export class EntityEffects {

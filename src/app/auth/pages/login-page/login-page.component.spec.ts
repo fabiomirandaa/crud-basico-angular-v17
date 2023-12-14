@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LoginPageComponent } from './login-page.component';
-import { LoginCardComponent } from '../../components/login-card/login-card.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginCardComponent } from '@auth/components/login-card/login-card.component';
+import { LoginPageComponent } from './login-page.component';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;

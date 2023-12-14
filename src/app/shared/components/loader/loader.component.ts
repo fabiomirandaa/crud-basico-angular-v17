@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { LoaderService } from '../../services/loader.service';
+
 import { CommonModule } from '@angular/common';
+import { LoaderService } from '@shared/services/loader.service';
 
 @Component({
   selector: 'app-loader',
   standalone: true,
-  imports:[CommonModule],
+  imports: [CommonModule],
   template: `
     @if (loaderService.isLoading$ | async) {
       <div class="overlay">
@@ -16,5 +17,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
-  constructor(public loaderService: LoaderService) {}
+  constructor(public loaderService: LoaderService) { }
 }

@@ -1,12 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { NgxMaskPipe, provideNgxMask } from 'ngx-mask';
-import { Entity } from '../../models/entity.interface';
-import { SpecialtyLabelPipe } from '../../pipes/specialty-label.pipe';
-import { EntityEditComponent } from '../entity-edit/entity-edit.component';
-import { RegionLabelPipe } from '../../pipes/region-label.pipe';
+import { CommonModule } from "@angular/common";
+import { Component, Inject } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { EntityEditComponent } from "@features/entity/components/entity-edit/entity-edit.component";
+import { Entity } from "@features/entity/models/entity.interface";
+import { RegionLabelPipe } from "@features/entity/pipes/region-label.pipe";
+import { SpecialtyLabelPipe } from "@features/entity/pipes/specialty-label.pipe";
+import { NgxMaskPipe, provideNgxMask } from "ngx-mask";
+
 
 @Component({
   selector: 'app-entity-read',

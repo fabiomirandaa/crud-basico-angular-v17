@@ -1,16 +1,16 @@
-import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { ApplicationConfig } from "@angular/core";
+import { provideAnimations } from "@angular/platform-browser/animations";
+import { provideRouter } from "@angular/router";
+import { AuthInterceptor } from "@auth/interceptors/auth.interceptor";
+import { EntityEffects } from "@features/entity/store/entity.effects";
+import { entityReducer } from "@features/entity/store/entity.reducer";
+import { provideEffects } from "@ngrx/effects";
+import { provideStore } from "@ngrx/store";
+import { provideStoreDevtools } from "@ngrx/store-devtools";
+import { provideEnvironmentNgxMask } from "ngx-mask";
+import { routes } from "./app.routes";
 
-import { routes } from './app.routes';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideStore } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { entityReducer } from './features/entity/store/entity.reducer';
-import { EntityEffects } from './features/entity/store/entity.effects';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
-import { provideEnvironmentNgxMask } from 'ngx-mask';
-import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

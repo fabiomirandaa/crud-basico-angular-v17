@@ -1,23 +1,22 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { Entity } from '../../models/entity.interface';
-import * as EntityActions from '../../store/entity.actions';
-import * as EntitySelectors from '../../store/entity.selectors';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { cnpjValidator } from '@shared/validators/cnpj.validator';
+import { Store } from '@ngrx/store';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { cnpjValidator } from '../../../../shared/validators/cnpj.validator';
+import { Observable } from 'rxjs';
+import { Entity } from '@features/entity/models/entity.interface';
+import * as EntityActions from '@features/entity/store/entity.actions';
+import * as EntitySelectors from '@features/entity/store/entity.selectors';
+
+
 
 @Component({
   selector: 'app-entity-edit',
@@ -34,7 +33,7 @@ import { cnpjValidator } from '../../../../shared/validators/cnpj.validator';
     MatIconModule,
     MatNativeDateModule,
     NgxMaskDirective
-],
+  ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     provideNgxMask()
@@ -91,7 +90,7 @@ export class EntityEditComponent implements OnInit {
     this.isLoading$ = this.store.select(EntitySelectors.selectIsLoading);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit() {
     if (this.entityForm.valid) {

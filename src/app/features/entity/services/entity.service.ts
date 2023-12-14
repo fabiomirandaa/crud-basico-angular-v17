@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Entity } from '../models/entity.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Entity } from '../models/entity.interface';
 export class EntityService {
   private apiUrl = 'http://localhost:3000/entity';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getEntities(): Observable<Entity[]> {
     return this.http.get<Entity[]>(this.apiUrl);

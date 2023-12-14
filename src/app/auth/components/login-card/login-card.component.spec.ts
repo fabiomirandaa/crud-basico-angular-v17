@@ -1,16 +1,18 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { LoginCardComponent } from './login-card.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
-import { of, throwError } from 'rxjs';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { By } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from "@angular/common";
+import { ComponentFixture, TestBed, fakeAsync, tick } from "@angular/core/testing";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { By } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { Router } from "@angular/router";
+
+import { AuthService } from "@auth/services/auth.service";
+import { of, throwError } from "rxjs";
+import { LoginCardComponent } from "./login-card.component";
+
 
 describe('LoginCardComponent', () => {
   let component: LoginCardComponent;
