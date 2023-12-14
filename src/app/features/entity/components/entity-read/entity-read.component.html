@@ -1,0 +1,48 @@
+<mat-dialog-content class="entity-view-container">
+  <div class="top-modal">
+    <h2>Visualizar entidade</h2>
+    <button class="btn" mat-raised-button color="primary" (click)="onEdit()">Editar</button>
+  </div>
+
+  <div class="entity-details">
+    <div class="detail">
+      <span class="label">Nome Fantasia</span>
+      <span class="value">{{ entity.tradeName }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">Razão Social</span>
+      <span class="value">{{ entity.businessName }}</span>
+    </div>
+    <div class="detail">
+      <span class="label">CNPJ</span>
+      <span class="value">{{ entity.cnpj | mask:'00.000.000/0000-00' }}</span>
+    </div>
+
+    <div class="detail">
+      <span class="label">Data Inauguração</span>
+      <span class="value">{{ entity.inaugurationDate | date:'dd/MM/yyyy' }}</span>
+    </div>
+
+    <div class="detail">
+      <span class="label">Regional</span>
+      <span class="value">{{ entity.region  | regionLabel:regions}}</span>
+    </div>
+
+    <div class="detail">
+      <span class="label">Ativo</span>
+      <span class="value">{{ entity.isActive ? 'Sim' : 'Não' }}</span>
+    </div>
+
+    <div class="detail">
+      <span class="label">Especialidades</span>
+      <span class="value" *ngFor="let specialty of entity.medicalSpecialties; let i = index">
+        {{ specialty | specialtyLabel:medicalSpecialties}}<span *ngIf="i < entity.medicalSpecialties.length - 1">, </span>
+      </span>
+    </div>
+
+  </div>
+
+  <div class="footer-modal">
+    <button mat-raised-button (click)="onClose()">Voltar</button>
+  </div>
+</mat-dialog-content>

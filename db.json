@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "email": "user@example.com",
+      "password": "$2a$10$I0hLT38RuUOJ5EjCiHCeJes8rtLA3regcr4N5/GfAUxHsBiGGsOPm",
+      "id": 1
+    },
+    {
+      "email": "example@example.com",
+      "password": "$2a$10$YG3t4PzZvYi.n74zuqcMKOJSpwi93oqYg5sE5sHtFnpD8y2s9gmya",
+      "id": 2
+    }
+  ],
+  "entity": [
+    {
+      "id": 1,
+      "businessName": "E Corppe",
+      "tradeName": "E-Corpe",
+      "cnpj": "52532824000106",
+      "region": "f2b75e0b-f7d4-44bf-9897-830826bba000",
+      "medicalSpecialties": [
+        "f2332a24-17d0-44da-9e29-ef32667a9900",
+        "f88e60fb-1b51-4231-af59-7e68bdd46da6",
+        "8b450a38-cd63-4ec0-b927-b75614d26858"
+      ],
+      "inaugurationDate": "2020-01-01T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "businessName": "Teste",
+      "tradeName": "Teste Bonito",
+      "cnpj": "31.106.940/0001-93",
+      "region": "0765b03a-ac6f-487a-a0b8-6b99ca36636d",
+      "medicalSpecialties": [
+        "8b450a38-cd63-4ec0-b927-b75614d26858",
+        "58c5fae9-b4d6-49eb-912e-88edb0640ead"
+      ],
+      "inaugurationDate": "2023-12-30T03:00:00.000Z",
+      "isActive": true,
+      "id": 2
+    },
+    {
+      "businessName": "Teste maior",
+      "tradeName": "Maior Teste",
+      "cnpj": "62200100000119",
+      "region": "2e9625b6-d413-4cc0-af0b-07f349bc6bf2",
+      "medicalSpecialties": [
+        "f2332a24-17d0-44da-9e29-ef32667a9900",
+        "f88e60fb-1b51-4231-af59-7e68bdd46da6",
+        "8b450a38-cd63-4ec0-b927-b75614d26858",
+        "58c5fae9-b4d6-49eb-912e-88edb0640ead",
+        "1eb02f11-4fa4-4d86-a4d2-f9c44e38e428",
+        "b1c0159d-3f23-4c81-8ccc-c2a9e266c85d"
+      ],
+      "inaugurationDate": "2023-12-28T03:00:00.000Z",
+      "isActive": true,
+      "id": 3
+    }
+  ]
+}

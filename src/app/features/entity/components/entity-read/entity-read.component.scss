@@ -1,0 +1,46 @@
+.entity-view-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+
+  .top-modal{
+    display: flex;
+    justify-content: space-between;
+    .btn {
+      align-self: center;
+    }
+  }
+
+  .footer-modal {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  .entity-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+
+    .detail {
+      display: flex;
+      flex-direction: column;
+
+      .label {
+        font-weight: bold;
+      }
+
+      .value {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  button {
+    margin-right: 8px;
+  }
+}

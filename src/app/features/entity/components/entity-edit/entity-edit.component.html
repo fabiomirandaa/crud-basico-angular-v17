@@ -1,0 +1,81 @@
+<div class="entity-edit-container">
+
+  <h2>
+    {{ data.entity ? 'Editar Entidade' : 'Adicionar Entidade' }}
+  </h2>
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="entityForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width">
+      <mat-label>Nome Comercial</mat-label>
+      <input matInput formControlName="businessName" placeholder="ex: AmorSaude Pinheiros">
+      <mat-error *ngIf="entityForm.get('businessName')?.errors?.['required']">
+        A razão social é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Nome Fantasia</mat-label>
+      <input matInput formControlName="tradeName" placeholder="ex: AmorSaude Pinheiros">
+      <mat-error *ngIf="entityForm.get('tradeName')?.errors?.['required']">
+        O nome fantasia é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>CNPJ</mat-label>
+      <input matInput mask="00.000.000/0000-00" formControlName="cnpj" placeholder="50.213.139/0001-77">
+      <mat-error *ngIf="entityForm.get('cnpj')?.errors?.['required']">
+        O CNPJ é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="entityForm.get('cnpj')?.errors?.['invalidCnpj']">
+        CNPJ inválido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Especialidades</mat-label>
+      <mat-select formControlName="medicalSpecialties" multiple>
+        <mat-option *ngFor="let specialty of medicalSpecialties" [value]="specialty.value">
+          {{ specialty.label }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="entityForm.get('medicalSpecialties')?.errors?.['required']">
+        Selecione ao menos uma especialidade.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Região</mat-label>
+      <mat-select formControlName="region">
+        <mat-option *ngFor="let region of regions" [value]="region.value">
+          {{ region.label }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="entityForm.get('region')?.errors?.['required']">
+        A região é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Data de Inauguração</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="inaugurationDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="entityForm.get('inaugurationDate')?.errors?.['required']">
+        A data de inauguração é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-slide-toggle formControlName="isActive">Ativa</mat-slide-toggle>
+
+    <div class="actions">
+      <button mat-raised-button (click)="onCancel()" type="button">Cancelar</button>
+      <button mat-raised-button color="primary" [disabled]="!entityForm.valid" type="submit">
+        {{ data.entity ? 'Editar' : 'Adicionar' }}
+      </button>
+
+      <button *ngIf="data.entity" mat-raised-button color="warn" (click)="onDelete()">Excluir</button>
+    </div>
+  </form>
+</mat-dialog-content>
+</div>

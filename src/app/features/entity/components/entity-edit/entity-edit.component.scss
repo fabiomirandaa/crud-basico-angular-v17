@@ -1,0 +1,31 @@
+.entity-edit-container {
+
+  h2 {
+    padding-left: 24px;
+  }
+
+  .dialog-content {
+    display: flex;
+    flex-direction: row;
+
+    mat-form-field {
+      margin: 5px 5px 15px 5px;
+      width: 45%;
+    }
+
+    mat-checkbox {
+      margin: 8px 0;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+
+    button {
+      margin-left: 8px;
+    }
+  }
+
+}
