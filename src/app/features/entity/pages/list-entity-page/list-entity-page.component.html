@@ -11,62 +11,67 @@
     </mat-form-field>
   </div>
 
-  <div class="table-container"  *ngIf="(entities$ | async)?.length; else noData">
-    <ng-container *ngIf="entities$ | async as entities">
-    <table mat-table [dataSource]="entities" matSort class="mat-elevation-z8" *ngIf="entities.length; else noData">
-
-      <ng-container matColumnDef="tradeName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
-        <td mat-cell *matCellDef="let entity"> {{ entity.tradeName }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="region">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Região </th>
-        <td mat-cell *matCellDef="let entity"> {{ entity.region | regionLabel:regions }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="medicalSpecialties">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidades </th>
-        <td mat-cell *matCellDef="let entity">
-          <span *ngFor="let specialty of entity.medicalSpecialties; let i = index">
-            {{ specialty | specialtyLabel:medicalSpecialties}}<span *ngIf="i < entity.medicalSpecialties.length - 1">, </span>
-          </span>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="isActive">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ativa </th>
-        <td mat-cell *matCellDef="let entity"> {{ entity.isActive ? 'Sim' : 'Não' }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Ações </th>
-        <td class="actions-td" mat-cell *matCellDef="let entity">
-          <button mat-icon-button (click)="openViewEntityModal(entity)">
-            <mat-icon>visibility</mat-icon>
-          </button>
-          <button mat-icon-button (click)="openEditEntityModal(entity)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button (click)="delete(entity)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </ng-container>
+  @if ((entities$ | async)?.length) {
+    <div class="table-container" >
+      @if (entities$ | async; as entities) {
+        @if (entities.length) {
+          <table mat-table [dataSource]="entities" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="tradeName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+              <td mat-cell *matCellDef="let entity"> {{ entity.tradeName }} </td>
+            </ng-container>
+            <ng-container matColumnDef="region">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Região </th>
+              <td mat-cell *matCellDef="let entity"> {{ entity.region | regionLabel:regions }} </td>
+            </ng-container>
+            <ng-container matColumnDef="medicalSpecialties">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidades </th>
+              <td mat-cell *matCellDef="let entity">
+                @for (specialty of entity.medicalSpecialties; track specialty; let i = $index) {
+                  <span>
+                    {{ specialty | specialtyLabel:medicalSpecialties}}@if (i < entity.medicalSpecialties.length - 1) {
+                    <span>, </span>
+                  }
+                </span>
+              }
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="isActive">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ativa </th>
+            <td mat-cell *matCellDef="let entity"> {{ entity.isActive ? 'Sim' : 'Não' }} </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td class="actions-td" mat-cell *matCellDef="let entity">
+              <button mat-icon-button (click)="openViewEntityModal(entity)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button (click)="openEditEntityModal(entity)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="delete(entity)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      } @else {
+        <p>Nenhum dado disponível para exibir.</p>
+      }
+    }
   </div>
+} @else {
+  <p>Nenhum dado disponível para exibir.</p>
+}
 
-  <ng-container *ngIf="entities$ | async as entities">
-    <mat-paginator  #paginator *ngIf="entities.length > 0" [length]="totalEntities$ | async" [pageIndex]="currentPage$ | async"
+@if (entities$ | async; as entities) {
+  @if (entities.length > 0) {
+    <mat-paginator  #paginator [length]="totalEntities$ | async" [pageIndex]="currentPage$ | async"
       [pageSize]="pageSize$ | async" [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
     </mat-paginator>
-  </ng-container>
+  }
+}
 
-  <ng-template #noData>
-    <p>Nenhum dado disponível para exibir.</p>
-  </ng-template>
 </div>

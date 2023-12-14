@@ -1,28 +1,38 @@
 <div class="login-container">
   <h1>Login</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
 
     <mat-form-field appearance="fill">
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" type="email">
-      <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']">
-        Por favor, digite seu usuário (e-mail de cadastro)!
-      </mat-error>
-      <mat-error *ngIf="loginForm.get('email')?.errors?.['email']">
-        Por favor, digite um e-mail válido!
-      </mat-error>
+      @if (loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']) {
+        <mat-error>
+          Por favor, digite seu usuário (e-mail de cadastro)!
+        </mat-error>
+      }
+      @if (loginForm.get('email')?.errors?.['email']) {
+        <mat-error>
+          Por favor, digite um e-mail válido!
+        </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Senha</mat-label>
       <input matInput formControlName="password" type="password">
-      <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']">
-        Digite uma senha.
-      </mat-error>
+      @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) {
+        <mat-error>
+          Digite uma senha.
+        </mat-error>
+      }
     </mat-form-field>
 
-    <div *ngIf="isLoading">Enviando...</div>
+    @if (isLoading) {
+      <div>Enviando...</div>
+    }
     <button class="button-primary" mat-raised-button color="primary" type="submit" [disabled]="isLoading">ENTRAR</button>
   </form>
 </div>

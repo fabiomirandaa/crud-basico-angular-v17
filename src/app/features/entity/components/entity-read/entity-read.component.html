@@ -35,14 +35,18 @@
 
     <div class="detail">
       <span class="label">Especialidades</span>
-      <span class="value" *ngFor="let specialty of entity.medicalSpecialties; let i = index">
-        {{ specialty | specialtyLabel:medicalSpecialties}}<span *ngIf="i < entity.medicalSpecialties.length - 1">, </span>
+      @for (specialty of entity.medicalSpecialties; track specialty; let i = $index) {
+        <span class="value">
+          {{ specialty | specialtyLabel:medicalSpecialties}}@if (i < entity.medicalSpecialties.length - 1) {
+          <span>, </span>
+        }
       </span>
-    </div>
-
+    }
   </div>
 
-  <div class="footer-modal">
-    <button mat-raised-button (click)="onClose()">Voltar</button>
-  </div>
+</div>
+
+<div class="footer-modal">
+  <button mat-raised-button (click)="onClose()">Voltar</button>
+</div>
 </mat-dialog-content>

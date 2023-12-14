@@ -7,10 +7,12 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports:[CommonModule],
   template: `
-    <div class="overlay" *ngIf="loaderService.isLoading$ | async">
-      <div class="loader"></div>
-    </div>
-  `,
+    @if (loaderService.isLoading$ | async) {
+      <div class="overlay">
+        <div class="loader"></div>
+      </div>
+    }
+    `,
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {

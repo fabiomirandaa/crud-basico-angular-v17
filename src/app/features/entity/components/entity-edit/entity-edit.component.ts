@@ -7,7 +7,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,7 +23,6 @@ import { cnpjValidator } from '../../../../shared/validators/cnpj.validator';
   selector: 'app-entity-edit',
   standalone: true,
   imports: [
-    CommonModule,
     MatDatepickerModule,
     ReactiveFormsModule,
     FormsModule,
@@ -35,7 +34,7 @@ import { cnpjValidator } from '../../../../shared/validators/cnpj.validator';
     MatIconModule,
     MatNativeDateModule,
     NgxMaskDirective
-  ],
+],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     provideNgxMask()

@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
+
 import { MatInputModule } from '@angular/material/input';
 
 
@@ -14,12 +14,12 @@ import { MatInputModule } from '@angular/material/input';
   selector: 'app-login-card',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatFormFieldModule],
+    MatFormFieldModule
+],
   templateUrl: './login-card.component.html',
   styleUrl: './login-card.component.scss'
 })
